@@ -45,104 +45,57 @@
 }
 
 .team-page-section {
-    padding: 60px 0;
+    padding: 80px 0;
     background: linear-gradient(180deg, #0a0d14 0%, var(--primary-color) 100%);
 }
 
-/* Team Groups */
-.team-group {
+/* Team Intro */
+.team-intro {
+    text-align: center;
     margin-bottom: 60px;
 }
 
-.team-group-header {
-    text-align: center;
-    margin-bottom: 35px;
-}
-
-.team-group-title {
-    font-size: 2rem;
+.section-title {
+    font-size: 2.5rem;
     font-weight: 700;
     color: var(--text-light);
     margin-bottom: 15px;
-    position: relative;
-    display: inline-block;
 }
 
-.team-group-title::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60%;
-    height: 3px;
-    background: linear-gradient(90deg, transparent, var(--accent-blue), var(--accent-amber), transparent);
-    border-radius: 2px;
-}
-
-.team-group-line {
-    width: 80px;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent-blue), var(--accent-amber));
-    margin: 20px auto 20px;
-    border-radius: 2px;
-}
-
-.team-group-description {
+.section-description {
+    font-size: 1.1rem;
     color: var(--text-gray);
-    font-size: 1rem;
-    line-height: 1.6;
-    max-width: 700px;
+    max-width: 600px;
     margin: 0 auto;
 }
 
-/* Team Grids */
-.team-grid {
-    display: grid;
-    gap: 30px;
-    margin-top: 35px;
-}
-
-.team-grid.founders {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.team-grid.leadership {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.team-grid.moderation {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+/* Team Members Container */
+.team-members {
     max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
 }
 
-/* Team Cards (Reusing from index.html) */
-.team-card {
+/* Member Card */
+.member-card {
+    display: flex;
+    align-items: center;
     background: rgba(26, 43, 75, 0.3);
-    border-radius: 20px;
-    padding: 30px 25px;
-    text-align: center;
+    border-radius: 16px;
+    padding: 30px 40px;
+    min-height: 180px;
     border: 1px solid rgba(58, 200, 255, 0.2);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
-    overflow: hidden;
+    overflow: visible;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
-    transform: translateY(30px);
-}
-
-.team-card.animate-in {
     animation: fadeInUp 0.6s ease-out forwards;
+    margin-top: 160px;
 }
 
-.team-card::before {
+.member-card::before {
     content: '';
     position: absolute;
     top: 0;
@@ -153,114 +106,201 @@
     opacity: 0;
     transition: opacity 0.4s ease;
     pointer-events: none;
+    border-radius: 16px;
 }
 
-.team-card:hover {
-    transform: translateY(-10px);
+.member-card:hover {
+    transform: translateY(-5px);
     border-color: var(--accent-blue);
     box-shadow: 
         0 20px 60px rgba(0, 0, 0, 0.4),
-        0 0 40px rgba(58, 200, 255, 0.2);
+        0 0 40px rgba(58, 200, 255, 0.15);
 }
 
-.team-card:hover::before {
+.member-card:hover::before {
     opacity: 1;
 }
 
-.avatar-wrapper {
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 20px;
-    position: relative;
+/* Avatar Container */
+.member-avatar {
+    position: absolute;
+    top: -155px;
+    width: 270px;
+    height: 340px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    z-index: 10;
 }
 
-.avatar {
+.avatar-3d {
     width: 100%;
     height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid rgba(58, 200, 255, 0.3);
-    transition: all 0.4s ease;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
     position: relative;
-    z-index: 2;
+    transition: all 0.4s ease;
 }
 
-.team-card:hover .avatar {
-    border-color: var(--accent-blue);
-    box-shadow: 0 0 30px rgba(58, 200, 255, 0.5);
-}
-
-.avatar-ring {
+/* Glowing line below avatar - emerging effect */
+.avatar-3d::after {
+    content: '';
     position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
-    border-radius: 50%;
-    border: 2px solid transparent;
-    background: linear-gradient(135deg, var(--accent-blue), var(--accent-amber)) border-box;
-    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    opacity: 0;
-    transition: opacity 0.4s ease;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent-blue), var(--accent-amber), transparent);
+    box-shadow: 
+        0 0 20px rgba(58, 200, 255, 0.8),
+        0 0 40px rgba(58, 200, 255, 0.4);
+    border-radius: 2px;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.member-card:hover .avatar-3d {
+    transform: translateY(-5px);
+}
+
+.member-card:hover .avatar-3d::after {
+    box-shadow: 
+        0 0 30px rgba(58, 200, 255, 1),
+        0 0 60px rgba(58, 200, 255, 0.6);
+}
+
+.roblox-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: bottom;
+    filter: drop-shadow(0 10px 30px rgba(58, 200, 255, 0.4));
+    transition: transform 0.4s ease;
+    position: relative;
     z-index: 1;
 }
 
-.team-card:hover .avatar-ring {
-    opacity: 1;
-    animation: rotate 3s linear infinite;
+.member-card:hover .roblox-avatar {
+    transform: scale(1.05);
+    filter: drop-shadow(0 15px 40px rgba(58, 200, 255, 0.6));
 }
 
-@keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+/* Member Content */
+.member-content {
+    position: relative;
+    z-index: 1;
+    flex: 1;
 }
 
 .member-name {
-    font-size: 1.4rem;
-    font-weight: 700;
+    font-size: 2rem;
+    font-weight: 800;
     color: var(--text-light);
     margin-bottom: 8px;
+    line-height: 1.2;
 }
 
-.member-role {
-    font-size: 0.95rem;
-    font-weight: 500;
+.member-position {
+    font-size: 0.85rem;
+    font-weight: 600;
     color: var(--accent-amber);
-    margin-bottom: 12px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    font-variant: small-caps;
 }
 
-.member-bio {
-    font-size: 0.95rem;
+.member-description {
+    font-size: 1rem;
     color: var(--text-gray);
     line-height: 1.6;
     margin: 0;
+    max-width: 650px;
 }
+
+/* Left Aligned Card (Avatar on Left) */
+.member-card.left {
+    padding-left: 310px;
+}
+
+.member-card.left .member-content {
+    text-align: right;
+}
+
+.member-card.left .member-avatar {
+    left: 20px;
+}
+
+.member-card.left .roblox-avatar {
+    transform: scaleX(-1); /* Face right */
+}
+
+.member-card.left:hover .roblox-avatar {
+    transform: scaleX(-1) scale(1.05);
+}
+
+/* Right Aligned Card (Avatar on Right) */
+.member-card.right {
+    padding-right: 310px;
+}
+
+.member-card.right .member-content {
+    text-align: left;
+}
+
+.member-card.right .member-avatar {
+    right: 20px;
+}
+
+/* Flip avatar for right-side cards */
+.flip-avatar .roblox-avatar {
+    transform: scaleX(-1);
+}
+
+.member-card:hover .flip-avatar .roblox-avatar {
+    transform: scaleX(-1) scale(1.05);
+}
+
+/* Animation Delays for Stagger Effect */
+.member-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.member-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.member-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.member-card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.member-card:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.member-card:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
 
 /* Team CTA */
 .team-cta {
     text-align: center;
-    padding: 45px 35px;
+    padding: 50px 40px;
     background: rgba(26, 43, 75, 0.3);
-    border-radius: 20px;
+    border-radius: 24px;
     border: 1px solid rgba(58, 200, 255, 0.2);
-    margin-top: 40px;
+    margin-top: 80px;
     position: relative;
     overflow: hidden;
     opacity: 0;
-    transform: translateY(30px);
-}
-
-.team-cta.animate-in {
-    animation: fadeInUp 0.6s ease-out forwards;
+    animation: fadeInUp 0.6s ease-out 0.7s forwards;
 }
 
 .team-cta::before {
@@ -275,7 +315,7 @@
 }
 
 .team-cta-title {
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-weight: 700;
     color: var(--text-light);
     margin-bottom: 15px;
@@ -283,12 +323,31 @@
 }
 
 .team-cta-description {
-    font-size: 1rem;
+    font-size: 1.05rem;
     color: var(--text-gray);
-    line-height: 1.6;
-    max-width: 600px;
+    line-height: 1.7;
+    max-width: 700px;
     margin: 0 auto 30px;
     position: relative;
+}
+
+.btn-cta {
+    display: inline-block;
+    padding: 14px 32px;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-amber));
+    color: var(--text-light);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(58, 200, 255, 0.3);
 }
 
 /* Animations */
@@ -322,25 +381,46 @@
         font-size: 1.1rem;
     }
 
-    .team-group-title {
+    .section-title {
         font-size: 2rem;
     }
 
-    .team-grid.founders,
-    .team-grid.leadership,
-    .team-grid.moderation {
-        grid-template-columns: 1fr;
-        max-width: 400px;
+    .member-card {
+        padding: 35px 25px !important;
+        min-height: 150px;
+        margin-top: 130px;
+    }
+
+    .member-card.left .member-content,
+    .member-card.right .member-content {
+        text-align: center;
+    }
+
+    .member-avatar {
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%);
+        width: 216px;
+        height: 270px;
+        top: -120px;
+    }
+
+    .member-name {
+        font-size: 1.7rem;
+    }
+
+    .member-description {
+        max-width: 100%;
     }
 
     .team-cta-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 }
 
 @media (max-width: 640px) {
     .team-hero {
-        padding: 120px 0 60px;
+        padding: 120px 0 40px;
     }
 
     .team-hero-title {
@@ -355,52 +435,53 @@
         padding: 60px 0;
     }
 
-    .team-intro-text {
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .section-description {
         font-size: 1rem;
     }
 
-    .team-group {
-        margin-bottom: 70px;
+    .team-members {
+        gap: 50px;
     }
 
-    .team-group-title {
-        font-size: 1.7rem;
+    .member-card {
+        padding: 30px 20px !important;
+        min-height: 140px;
+        margin-top: 105px;
     }
 
-    .team-group-description {
-        font-size: 1rem;
-    }
-
-    .team-card {
-        padding: 30px 20px;
-    }
-
-    .avatar-wrapper {
-        width: 120px;
-        height: 120px;
+    .member-avatar {
+        width: 189px;
+        height: 243px;
+        top: -100px;
     }
 
     .member-name {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
     }
 
-    .member-role {
-        font-size: 0.9rem;
+    .member-position {
+        font-size: 0.8rem;
+        margin-bottom: 10px;
     }
 
-    .member-bio {
+    .member-description {
         font-size: 0.9rem;
     }
 
     .team-cta {
-        padding: 40px 25px;
+        padding: 35px 25px;
+        margin-top: 60px;
     }
 
     .team-cta-title {
-        font-size: 1.7rem;
+        font-size: 1.6rem;
     }
 
     .team-cta-description {
-        font-size: 1rem;
+        font-size: 0.95rem;
     }
 }
