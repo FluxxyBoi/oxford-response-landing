@@ -1,0 +1,1 @@
+Update logo.png with high quality logo.
