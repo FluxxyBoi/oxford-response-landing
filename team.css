@@ -159,13 +159,15 @@
     border-radius: 2px;
     z-index: 5;
     pointer-events: none;
+    transition: all 0.4s ease;
 }
 
 .member-card:hover .avatar-3d {
-    transform: translateY(-5px);
+    transform: none;
 }
 
 .member-card:hover .avatar-3d::after {
+    transform: translateX(-50%) scaleX(1.05);
     box-shadow: 
         0 0 30px rgba(58, 200, 255, 1),
         0 0 60px rgba(58, 200, 255, 0.6);
@@ -177,9 +179,8 @@
     object-fit: contain;
     object-position: bottom;
     filter: drop-shadow(0 10px 30px rgba(58, 200, 255, 0.4));
-    transition: transform 0.4s ease;
-    position: relative;
-    z-index: 1;
+    transition: all 0.4s ease;
+    transform-origin: center bottom;
 }
 
 .member-card:hover .roblox-avatar {
@@ -333,21 +334,24 @@
 
 .btn-cta {
     display: inline-block;
-    padding: 14px 32px;
-    background: linear-gradient(135deg, var(--accent-blue), var(--accent-amber));
-    color: var(--text-light);
+    padding: 0.7rem 1.8rem;
+    background: linear-gradient(135deg, var(--accent-amber), #ff9500);
+    color: #10141f;
     text-decoration: none;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 1rem;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 0.9rem;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 15px var(--glow-amber), 0 0 20px var(--glow-amber);
+    text-shadow: none;
     position: relative;
     overflow: hidden;
 }
 
 .btn-cta:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(58, 200, 255, 0.3);
+    box-shadow: 0 6px 25px var(--glow-amber), 0 0 30px var(--glow-amber);
+    background: linear-gradient(135deg, #ffc633, var(--accent-amber));
 }
 
 /* Animations */
