@@ -121,11 +121,30 @@ body {
     gap: 4px;
     transition: color 0.3s ease;
     cursor: pointer;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-amber));
+    transition: width 0.3s ease;
+    border-radius: 2px;
 }
 
 .nav-link:hover {
     color: var(--accent-blue);
     text-shadow: 0 0 10px var(--glow-blue);
+}
+
+.nav-link:hover::after,
+.dropdown:hover > .nav-link::after {
+    width: 100%;
 }
 
 .arrow {
