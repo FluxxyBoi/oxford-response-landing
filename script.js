@@ -99,7 +99,7 @@ const observer = new IntersectionObserver((entries) => {
 // Observe all animated elements
 document.addEventListener('DOMContentLoaded', () => {
     const animatedElements = document.querySelectorAll(
-        '.about-text, .about-image, .team-card, .feature-card, .cta-section'
+        '.about-text, .about-image, .team-card, .feature-card, .cta-section, .team-cta'
     );
     
     animatedElements.forEach(el => {
