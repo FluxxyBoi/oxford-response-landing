@@ -74,6 +74,13 @@ body {
     font-weight: 700;
     font-size: 1.2rem;
     letter-spacing: 2px;
+    text-decoration: none;
+    position: relative;
+}
+
+/* Prevent underline animation on logo link */
+.logo-text::after {
+    display: none !important;
 }
 
 .logo-image {
@@ -434,7 +441,21 @@ body {
     gap: 0.3rem;
 }
 
+.stat-number-wrapper {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    white-space: nowrap;
+}
+
 .stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent-blue);
+    text-shadow: 0 0 20px var(--glow-blue), 0 0 40px var(--glow-blue);
+}
+
+.stat-plus {
     font-size: 2rem;
     font-weight: 700;
     color: var(--accent-blue);

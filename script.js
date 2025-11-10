@@ -106,3 +106,33 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 });
+
+// Counter animation for hero stats
+function animateCounter(element, target, duration = 2000) {
+    const start = 0;
+    const increment = target / (duration / 16); // 60fps
+    let current = start;
+    
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            element.textContent = target.toLocaleString();
+            clearInterval(timer);
+        } else {
+            element.textContent = Math.floor(current).toLocaleString();
+        }
+    }, 16);
+}
+
+// Start counter animation when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    const counters = document.querySelectorAll('.stat-number[data-target]');
+    
+    // Add a small delay before starting the animation
+    setTimeout(() => {
+        counters.forEach(counter => {
+            const target = parseInt(counter.getAttribute('data-target'));
+            animateCounter(counter, target);
+        });
+    }, 500);
+});
