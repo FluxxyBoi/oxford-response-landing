@@ -618,12 +618,14 @@ body {
     transform: translateX(0);
 }
 
-.section-title {
+.image-frame {
     position: relative;
-    border-radius: 20px;
+    border-radius: 24px;
     overflow: hidden;
-    border: 2px solid rgba(58, 200, 255, 0.3);
+    border: 3px solid rgba(58, 200, 255, 0.3);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 30px var(--glow-blue);
+    padding: 1rem;
+    background: rgba(26, 43, 75, 0.3);
 }
 
 .team-photo {
