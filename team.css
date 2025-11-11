@@ -25,6 +25,7 @@
     position: relative;
     z-index: 1;
     opacity: 0;
+
     animation: fadeInUp 0.8s ease-out forwards;
 }
 
@@ -186,6 +187,12 @@
 .member-card:hover .roblox-avatar {
     transform: scale(1.05);
     filter: drop-shadow(0 15px 40px rgba(58, 200, 255, 0.6));
+}
+
+/* Specific avatar adjustments */
+.omitser-avatar {
+    height: 65%;
+    margin-top: auto;
 }
 
 /* Member Content */
